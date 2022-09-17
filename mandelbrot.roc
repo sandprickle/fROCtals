@@ -1,4 +1,4 @@
-app "brots"
+app "roc-mandelbrot"
     packages { pf: "cli-platform/main.roc" }
     imports [pf.Stdout, pf.Task.{ Task, await }]
     provides [main] to pf
