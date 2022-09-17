@@ -1,0 +1,16 @@
+Benchmark 1: node ./mandelbrot.js
+  Time (mean ± σ):      9.269 s ±  0.054 s    [User: 9.234 s, System: 0.029 s]
+  Range (min … max):    9.224 s …  9.372 s    10 runs
+ 
+Benchmark 2: ./roc-mandelbrot
+  Time (mean ± σ):      3.215 s ±  0.023 s    [User: 3.208 s, System: 0.001 s]
+  Range (min … max):    3.196 s …  3.250 s    10 runs
+ 
+Benchmark 3: rs-mandelbrot/target/release/rs-mandelbrot
+  Time (mean ± σ):      2.931 s ±  0.028 s    [User: 2.924 s, System: 0.001 s]
+  Range (min … max):    2.901 s …  2.964 s    10 runs
+ 
+Summary
+  'rs-mandelbrot/target/release/rs-mandelbrot' ran
+    1.10 ± 0.01 times faster than './roc-mandelbrot'
+    3.16 ± 0.04 times faster than 'node ./mandelbrot.js'
