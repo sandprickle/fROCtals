@@ -14,11 +14,17 @@ function mandelbrot(c) {
   let z = { re: 0, im: 0 }
   let iterCount = 0
 
-  do {
-    z = { re: z.re * z.re - z.im * z.im, im: 2 * z.re * z.im }
-    z = { re: z.re + c.re, im: z.im + c.im }
+  while (z.re + z.im <= 4 && iterCount < cfg.maxIterations) {
+    z = {
+      re: z.re * z.re - z.im * z.im,
+      im: 2 * z.re * z.im,
+    }
+    z = {
+      re: z.re + c.re,
+      im: z.im + c.im,
+    }
     iterCount++
-  } while (z.re + z.im <= 4 && iterCount < cfg.maxIterations)
+  }
 
   return (iterCount === cfg.maxIterations)
 }
