@@ -5,7 +5,7 @@ ASCII mandelbrot plotter in Roc, with comparison implementations in other langua
 Comparisons implemented: 
 
 - [x] JavaScript
-- [ ] Rust
+- [x] Rust
 - [ ] Haskell
 - [ ] Zig
 - [ ] Go
