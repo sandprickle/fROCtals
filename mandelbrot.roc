@@ -7,7 +7,6 @@ cfg : {
     width : Nat,
     height : Nat,
     maxIterations : Nat,
-    zoom : F64,
     xBounds : { min : F64, max : F64 },
     yBounds : { min : F64, max : F64 },
     center : Complex,
@@ -16,7 +15,6 @@ cfg = {
     width: 180,
     height: 40,
     maxIterations: 1_000_000,
-    zoom: 1.0,
     xBounds: { min: -2.0, max: 2.0 },
     yBounds: { min: -1.0, max: 1.0 },
     center: { re: -0.5, im: 0.0 },
@@ -51,16 +49,14 @@ points =
     xScale =
         (cfg.xBounds.max - cfg.xBounds.min)
         / Num.toFrac cfg.width
-        / Num.toFrac cfg.zoom
 
     yScale =
         (cfg.yBounds.max - cfg.yBounds.min)
         / Num.toFrac cfg.height
-        / Num.toFrac cfg.zoom
 
     currentPoint = {
-        re: Num.toFrac x * xScale + cfg.xBounds.min / cfg.zoom + cfg.center.re,
-        im: Num.toFrac y * yScale + cfg.yBounds.min / cfg.zoom + cfg.center.im,
+        re: Num.toFrac x * xScale + cfg.xBounds.min + cfg.center.re,
+        im: Num.toFrac y * yScale + cfg.yBounds.min + cfg.center.im,
     }
 
     mandelbrot currentPoint { re: 0.0, im: 0.0 } 0
