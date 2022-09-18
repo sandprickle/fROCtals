@@ -6,7 +6,7 @@ Comparisons implemented:
 
 - [x] JavaScript
 - [x] Rust
-- [ ] Haskell
+- [x] Haskell
 - [ ] Zig
 - [ ] Go
 
