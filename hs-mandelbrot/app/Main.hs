@@ -14,13 +14,15 @@ yBounds :: Bounds
 yBounds = Bounds (-1.0, 1.0)
 
 center :: Complex
-center = Complex (0.0, 0.0)
+center = Complex (-0.5, 0.0)
 
 xScale :: Double
-xScale = (bMax xBounds + bMin xBounds) / fromIntegral width
+xScale =
+    (upperBound xBounds - lowerBound xBounds) / fromIntegral width
 
 yScale :: Double
-yScale = (bMax yBounds + bMin yBounds) / fromIntegral height
+yScale =
+    (upperBound yBounds - lowerBound yBounds) / fromIntegral height
 
 main :: IO ()
 main = putStr plot
@@ -31,10 +33,10 @@ main = putStr plot
 template :: [(Integer, [(Integer, Complex)])]
 template =
     zip
-        [0 .. toInteger height]
+        [0 ..]
         ( replicate
             height
-            (zip [0 .. toInteger width] (replicate width origin))
+            (zip [0 ..] (replicate width origin))
         )
 
 grid :: [[Char]]
@@ -42,28 +44,31 @@ grid =
     map
         ( \(y, row) ->
             ( map
-                ( \(x, _) ->
-                    if ( mandelbrot
-                            ( Complex
-                                ( fromIntegral x * xScale + bMin xBounds + re center
-                                , fromIntegral y * yScale + bMin yBounds + im center
-                                )
+                ( \(x, _item) ->
+                    mandelbrot
+                        ( Complex
+                            ( fromIntegral x
+                                * xScale
+                                + lowerBound xBounds
+                                + re center
+                            , fromIntegral y
+                                * yScale
+                                + lowerBound yBounds
+                                + im center
                             )
-                            origin
-                            0
-                       )
-                        then '*'
-                        else '?'
+                        )
+                        origin
+                        0
                 )
                 row
             )
         )
         template
 
-mandelbrot :: Complex -> Complex -> Int -> Bool
+mandelbrot :: Complex -> Complex -> Int -> Char
 mandelbrot c z i
-    | i >= maxIterations = True
-    | re z3 * re z3 + im z3 * im z3 > 4.0 = False
+    | i >= maxIterations = '*'
+    | re z3 * re z3 + im z3 * im z3 > 4.0 = ' '
     | otherwise = mandelbrot c z3 (i + 1)
   where
     z2 =
@@ -81,10 +86,10 @@ mandelbrot c z i
 data Complex = Complex (Double, Double)
 
 re :: Complex -> Double
-re (Complex (val, _)) = val
+re (Complex (real, _)) = real
 
 im :: Complex -> Double
-im (Complex (_, val)) = val
+im (Complex (_, imaginary)) = imaginary
 
 origin :: Complex
 origin = Complex (0.0, 0.0)
@@ -92,8 +97,8 @@ origin = Complex (0.0, 0.0)
 -- Bounds Type & functions
 data Bounds = Bounds (Double, Double)
 
-bMin :: Bounds -> Double
-bMin (Bounds (m, _)) = m
+lowerBound :: Bounds -> Double
+lowerBound (Bounds (lower, _)) = lower
 
-bMax :: Bounds -> Double
-bMax (Bounds (_, m)) = m
+upperBound :: Bounds -> Double
+upperBound (Bounds (_, upper)) = upper
