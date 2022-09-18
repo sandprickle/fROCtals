@@ -2,7 +2,7 @@ const cfg = {
   xBounds: { min: -2.0, max: 2.0 },
   yBounds: { min: -1.0, max: 1.0 },
   center: { re: -0.5, im: 0 },
-  maxIterations: 1000000,
+  maxIterations: 1000,
   height: 40,
   width: 180,
 }

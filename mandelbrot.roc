@@ -14,7 +14,7 @@ cfg : {
 cfg = {
     width: 180,
     height: 40,
-    maxIterations: 1_000_000,
+    maxIterations: 1_000,
     xBounds: { min: -2.0, max: 2.0 },
     yBounds: { min: -1.0, max: 1.0 },
     center: { re: -0.5, im: 0.0 },

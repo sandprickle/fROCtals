@@ -5,7 +5,7 @@ height :: Int
 height = 40
 
 maxIterations :: Int
-maxIterations = 250
+maxIterations = 1000
 
 xBounds :: Bounds
 xBounds = Bounds (-2.0, 2.0)

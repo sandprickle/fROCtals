@@ -8,7 +8,7 @@ const CONFIG: Config = Config {
         max: 1.0,
     },
     center: Complex { re: -0.5, im: 0.0 },
-    max_iterations: 1_000_000,
+    max_iterations: 1_000,
     height: 40,
     width: 180,
 };
