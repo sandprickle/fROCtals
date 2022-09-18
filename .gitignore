@@ -1,5 +1,7 @@
 cli-platform
 roc-mandelbrot
+rust-mandelbrot
+haskell-mandelbrot
 rs-mandelbrot/target
 hs-mandelbrot/dist-newstyle
 hs-mandelbrot/hs-mandelbrot
