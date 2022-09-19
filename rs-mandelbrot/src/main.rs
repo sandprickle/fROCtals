@@ -75,6 +75,7 @@ fn mandelbrot(c: Complex, max_iterations: u32) -> bool {
 
     iter_count == max_iterations
 }
+
 struct Complex {
     re: f64,
     im: f64,
